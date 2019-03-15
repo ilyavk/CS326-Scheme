@@ -1,0 +1,31 @@
+(define (double L)
+    (if (null? L)
+      '()
+      (append 
+        (list (* 2 (car L))) 
+        (double (cdr L))
+      )
+    )
+)
+
+(define (dupl L)
+  (if (null? L)
+    '()
+    (if (member (car L) (cdr L))
+      (cons (car L) (dupl (cdr L)))
+      (dupl (cdr L))
+    )
+  )
+)
+
+(define (tally V L)
+  (define n 0)  ; counter to keep track of occurenes
+  (if (null? L)
+    '()
+    (if (equal? V (car L))
+      (+ 1 n)
+      (tally V (cdr L))
+    )
+  )
+)
+
